@@ -1,182 +1,70 @@
-**[Installation](#installation)** |
-**[Documentation](https://jupyterlab.readthedocs.io)** |
-**[Contributing](#contributing)** |
-**[License](#license)** |
-**[Team](#team)** |
-**[Getting help](#getting-help)** |
 
-# [JupyterLab](https://jupyterlab.readthedocs.io)
+# Recursive Version of Floyd-Warshall Algorithm
+
+This project aims to enhance the Floyd-Warshall algorithm by implementing a recursive method. The deliverables include a recursive implementation of the algorithm, an iterative implementation sourced from geeksforgeeks, unit tests validating the correctness of the recursive implementation, a performance comparison analysis highlighting the differences in running time and complexity, as well as a detailed report outlining the project's methodology and findings.
+
+
+## What is Floyd-Warshall Algorithm?
+
+The Floyd-Warshall algorithm is an algorithm used to find the shortest path between all pairs of nodes in a weighted graph. The matrix is initially filled with the weights of the edges connecting the nodes, and the algorithm updates the matrix by considering all possible intermediate nodes that could make a shorter path between each pair of nodes. For each intermediate node, it computes the distance between each pair of nodes as the minimum of the distance between start node and end node using an intermediate node or the current distance between start node and end node. The process repeats until all possible intermediate nodes have been considered.
 
 ![Initial Graph](https://github.com/tolgatosunn/Floyd-Warshall_Recursion/blob/main/Images/Initial%20Graph.PNG)
+[Initial graph which displays distances between the nodes](https://www.programiz.com/dsa/floyd-warshall-algorithm)
 
-[![PyPI version](https://badge.fury.io/py/jupyterlab.svg)](https://badge.fury.io/py/jupyterlab)
-[![Downloads](https://pepy.tech/badge/jupyterlab/month)](https://pepy.tech/project/jupyterlab/month)
-[![Build Status](https://github.com/jupyterlab/jupyterlab/workflows/Linux%20Tests/badge.svg)](https://github.com/jupyterlab/jupyterlab/actions?query=branch%3Amaster+workflow%3A%22Linux+Tests%22)
-[![Build Status](https://github.com/jupyterlab/jupyterlab/workflows/Windows%20Tests/badge.svg)](https://github.com/jupyterlab/jupyterlab/actions?query=branch%3Amaster+workflow%3A%22Windows+Tests%22)
-[![Documentation Status](https://readthedocs.org/projects/jupyterlab/badge/?version=stable)](http://jupyterlab.readthedocs.io/en/stable/)
-[![Crowdin](https://badges.crowdin.net/jupyterlab/localized.svg)](https://crowdin.com/project/jupyterlab)
-[![GitHub](https://img.shields.io/badge/issue_tracking-github-blue.svg)](https://github.com/jupyterlab/jupyterlab/issues)
-[![Discourse](https://img.shields.io/badge/help_forum-discourse-blue.svg)](https://discourse.jupyter.org/c/jupyterlab)
-[![Gitter](https://img.shields.io/badge/social_chat-gitter-blue.svg)](https://gitter.im/jupyterlab/jupyterlab)
-[![Gitpod](https://img.shields.io/badge/gitpod_editor-open-blue.svg)](https://gitpod.io/#https://github.com/jupyterlab/jupyterlab)
+![Initial Matrix](https://github.com/tolgatosunn/Floyd-Warshall_Recursion/blob/main/Images/Initial%20Matrix.PNG)
+[Initial matrix which includes all the distances between the nodes.](https://www.programiz.com/dsa/floyd-warshall-algorithm)
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab/jupyterlab-demo/75ab1750f37b27db8e135c2c4f2139da6b641609?urlpath=lab/tree/demo)
+![Final Matrix](https://github.com/tolgatosunn/Floyd-Warshall_Recursion/blob/main/Images/Final%20Matrix.PNG)
+[Final matrix which includes all the shortest distances between the nodes.](https://www.programiz.com/dsa/floyd-warshall-algorithm)
 
-An extensible environment for interactive and reproducible computing, based on the
-Jupyter Notebook and Architecture.
+## Code and Resources Used
 
-[JupyterLab](http://jupyterlab.readthedocs.io/en/stable/) is the next-generation user interface for [Project Jupyter](https://jupyter.org) offering
-all the familiar building blocks of the classic Jupyter Notebook (notebook,
-terminal, text editor, file browser, rich outputs, etc.) in a flexible and
-powerful user interface.
+Python Version: 3.8.5
 
-JupyterLab can be extended using [npm](https://www.npmjs.com/) packages
-that use our public APIs. The _prebuilt_ extensions can be distributed
-via [PyPI](https://pypi.org/search/?q=jupyterlab&o=-created&c=Framework+%3A%3A+Jupyter),
-conda, and other package managers. The _source_ extensions can be installed
-directly from npm (search for [jupyterlab-extension](https://www.npmjs.com/search?q=keywords:jupyterlab-extension)) but require an additional build step.
-You can also find JupyterLab extensions exploring GitHub topic [jupyterlab-extension](https://github.com/topics/jupyterlab-extension).
-To learn more about extensions, see the [user documentation](https://jupyterlab.readthedocs.io/en/latest/user/extensions.html).
+Jupyter Lab: 3.3.2
 
-Read the current JupyterLab documentation on [ReadTheDocs](http://jupyterlab.readthedocs.io/en/stable/).
+Packages: sys, random, unittest, patch, StringIO, time
+## Recursive Version
 
----
+Module Name: floyd_recursion.py
 
-## Getting started
+Firstly, the system prompts the user to enter a positive integer that represents the desired range of the graph to be produced. The input is validated to ensure it is indeed a positive integer. If the input does not meet this requirement, appropriate warnings are raised, and the system exits. A graph is then generated based on the provided range using randomly generated values.
 
-### Installation
+The "floyd" function is employed to determine the shortest path between nodes. The function requires as input a previously generated graph and an intermediate node number. The function creates the "graph_range" value, "start_nodes" and "end_nodes" lists based on the input graph. For instance, the generated graph's size is 4x4, so "graph_range", "start_nodes" and "end_nodes" wil be 4, [0, 1, 2, 3] and [0, 1, 2, 3] respectively. 
 
-If you use [conda](https://docs.conda.io/en/latest/), [mamba](https://mamba.readthedocs.io/en/latest/), or [pip](https://docs.python.org/3/installing/index.html), you can install JupyterLab with one of the following commands.
+The function then checks if intermediate_node is less than the graph_range. If so, the function interates through the for loops for each start nodes and end nodes. It proceeds to update the distance matrix by comparing the distance from each start_node to each end_node directly with the distance that goes through the intermediate_node. If the latter is shorter, the distance matrix is updated accordingly.
 
-- If you use conda:
-  ```shell
-  conda install -c conda-forge jupyterlab
-  ```
-- If you use mamba:
-  ```shell
-  mamba install -c conda-forge jupyterlab
-  ```
-- If you use pip:
-  ```shell
-  pip install jupyterlab
-  ```
-  If installing using `pip install --user`, you must add the user-level `bin` directory to your `PATH` environment variable in order to launch `jupyter lab`. If you are using a Unix derivative (e.g., FreeBSD, GNU/Linux, macOS), you can do this by running `export PATH="$HOME/.local/bin:$PATH"`. If you are using a macOS version that comes with Python 2, run `pip3` instead of `pip`.
+The function then recursively calls itself with the updated distance matrix and the intermediate_node incremented by 1. This process continues until intermediate_node is equal to or greater than the graph_range.
 
-For more detailed instructions, consult the [installation guide](http://jupyterlab.readthedocs.io/en/latest/getting_started/installation.html). Project installation instructions from the git sources are available in the [contributor documentation](CONTRIBUTING.md).
+Once all possible shortest paths have been found, the function prints the final distance matrix using the print_graph function.
 
-#### Installing with Previous Versions of Jupyter Notebook
 
-When using a version of Jupyter Notebook earlier than 5.3, the following command must be run after installing JupyterLab to enable the JupyterLab server extension:
 
-```bash
-jupyter serverextension enable --py jupyterlab --sys-prefix
-```
 
-### Running
+## Iterative Version
 
-Start up JupyterLab using:
+Module Name: geeks_floyd.py
 
-```bash
-jupyter lab
-```
+This module is imported from [geeksforgeeks](https://www.geeksforgeeks.org/floyd-warshall-algorithm-dp-16/) to compare with the recursive version of the Floyd-Warshall algorithm.
+## Unit Test of Recursive Floyd-Warshall Algorithm
 
-JupyterLab will open automatically in the browser. See the [documentation](http://jupyterlab.readthedocs.io/en/latest/getting_started/starting.html) for additional details.
+Module Name: test_floyd_recursion.py
 
-If you encounter an error like "Command 'jupyter' not found", please make sure `PATH` environment variable is set correctly. Alternatively, you can start up JupyterLab using `~/.local/bin/jupyter lab` without changing the `PATH` environment variable.
+This piece of code performs unit tests of get_user_input, graph_creator, floyd and print_graph functions from floyd_recursion module.
+## Time Performance Comparision
 
-### Prerequisites and Supported Browsers
+Module Name: time_performance.py
 
-The latest versions of the following browsers are currently _known to work_:
+This piece of code is designed to compare the required execution time of recursive and iterative versions of the Floyd-Warshall algorithm. 
 
-- Firefox
-- Chrome
-- Safari
+The module generates 10,000 graphs with random variables. The shortest distances between the nodes in each graph is calculated by recursive and iterative version of the algorithm.The difference in ratio is then printed as the output.
 
-See our [documentation](http://jupyterlab.readthedocs.io/en/latest/getting_started/installation.html) for additional details.
+As a result, recursive version is about 23% faster than iterative version.
+## Complexity Comparision
 
----
+Module Name: complexity_comparision.ipynb
 
-## Getting help
+This module is designed to compare the complexity of the recursive and iterative versions of the Floyd-Warshall algorithm. The finding is that there is no significant difference between the versions. 
+## The Report
 
-We encourage you to ask questions on the [Discourse forum](https://discourse.jupyter.org/c/jupyterlab). A question answered there can become a useful resource for others.
-
-### Bug report
-
-To report a bug please read the [guidelines](https://jupyterlab.readthedocs.io/en/latest/getting_started/issue.html) and then open a [Github issue](https://github.com/jupyterlab/jupyterlab/issues/new?labels=bug%2C+status%3ANeeds+Triage&template=bug_report.md). To keep resolved issues self-contained, the [lock bot](https://github.com/apps/lock) will lock closed issues as resolved after a period of inactivity. If a related discussion is still needed after an issue is locked, please open a new issue and reference the old issue.
-
-### Feature request
-
-We also welcome suggestions for new features as they help make the project more useful for everyone. To request a feature please use the [feature request template](https://github.com/jupyterlab/jupyterlab/issues/new?labels=enhancement%2C+status%3ANeeds+Triage&template=feature_request.md).
-
----
-
-## Development
-
-### Extending JupyterLab
-
-To start developing an extension for JupyterLab, see the [developer documentation](https://jupyterlab.readthedocs.io/en/latest/extension/extension_dev.html) and the [API docs](https://jupyterlab.readthedocs.io/en/latest/api/).
-
-### Contributing
-
-To contribute code or documentation to JupyterLab itself, please read the [contributor documentation](https://jupyterlab.readthedocs.io/en/latest/developer/contributing.html).
-
-JupyterLab follows the Jupyter [Community Guides](https://jupyter.readthedocs.io/en/latest/community/content-community.html).
-
-### License
-
-JupyterLab uses a shared copyright model that enables all contributors to maintain the
-copyright on their contributions. All code is licensed under the terms of the revised [BSD license](https://github.com/jupyterlab/jupyterlab/blob/master/LICENSE).
-
-### Team
-
-JupyterLab is part of [Project Jupyter](http://jupyter.org/) and is developed by an open community. The maintenance team is assisted by a much larger group of contributors to JupyterLab and Project Jupyter as a whole.
-
-JupyterLab's current maintainers are listed in alphabetical order, with affiliation, and main areas of contribution:
-
-- Mehmet Bektas, Netflix (general development, extensions).
-- Alex Bozarth, IBM (general development, extensions).
-- Eric Charles, Datalayer, (general development, extensions).
-- Frédéric Collonval, QuantStack (general development, extensions).
-- Martha Cryan, IBM (general development, extensions).
-- Afshin Darian, Two Sigma (co-creator, application/high-level architecture,
-  prolific contributions throughout the code base).
-- Vidar T. Fauske, JPMorgan Chase (general development, extensions).
-- Brian Granger, AWS (co-creator, strategy, vision, management, UI/UX design,
-  architecture).
-- Jason Grout, Databricks (co-creator, vision, general development).
-- Michał Krassowski, University of Oxford (general development, extensions).
-- Max Klein, JPMorgan Chase (UI Package, build system, general development, extensions).
-- Gonzalo Peña-Castellanos, QuanSight (general development, i18n, extensions).
-- Fernando Perez, UC Berkeley (co-creator, vision).
-- Isabela Presedo-Floyd, QuanSight Labs (design/UX).
-- Steven Silvester, MongoDB (co-creator, release management, packaging,
-  prolific contributions throughout the code base).
-- Jeremy Tuloup, QuantStack (general development, extensions).
-
-Maintainer emeritus:
-
-- Chris Colbert, Project Jupyter (co-creator, application/low-level architecture,
-  technical leadership, vision, PhosphorJS)
-- Jessica Forde, Project Jupyter (demo, documentation)
-- Tim George, Cal Poly (UI/UX design, strategy, management, user needs analysis).
-- Cameron Oelsen, Cal Poly (UI/UX design).
-- Ian Rose, Quansight/City of LA (general core development, extensions).
-- Andrew Schlaepfer, Bloomberg (general development, extensions).
-- Saul Shanabrook, Quansight (general development, extensions)
-
-This list is provided to give the reader context on who we are and how our team functions.
-To be listed, please submit a pull request with your information.
-
----
-
-### Weekly Dev Meeting
-
-We have videoconference meetings every week where we discuss what we have been working on and get feedback from one another.
-
-Anyone is welcome to attend, if they would like to discuss a topic or just listen in.
-
-- When: Wednesdays [9:00 AM Pacific Time (USA)](https://www.thetimezoneconverter.com/?t=9%3A00%20am&tz=San%20Francisco&)
-- Where: [`jovyan` Zoom](https://zoom.us/my/jovyan?pwd=c0JZTHlNdS9Sek9vdzR3aTJ4SzFTQT09)
-- What: [Meeting notes](https://hackmd.io/Y7fBMQPSQ1C08SDGI-fwtg?both)
-
-> Notes are archived on [GitHub JupyterLab team compass](https://github.com/jupyterlab/team-compass/issues).
+The report explains how the application is built alongside its unit tests. Also, the performance of the recursive and the iterative versions of the Floyd-Warshall algorithm is discussed.
