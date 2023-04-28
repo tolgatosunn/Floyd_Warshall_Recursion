@@ -7,6 +7,8 @@
 
 # [JupyterLab](https://jupyterlab.readthedocs.io)
 
+![Initial Graph](https://github.com/tolgatosunn/Floyd-Warshall_Recursion/blob/main/Images/Initial%20Graph.PNG)
+
 [![PyPI version](https://badge.fury.io/py/jupyterlab.svg)](https://badge.fury.io/py/jupyterlab)
 [![Downloads](https://pepy.tech/badge/jupyterlab/month)](https://pepy.tech/project/jupyterlab/month)
 [![Build Status](https://github.com/jupyterlab/jupyterlab/workflows/Linux%20Tests/badge.svg)](https://github.com/jupyterlab/jupyterlab/actions?query=branch%3Amaster+workflow%3A%22Linux+Tests%22)
