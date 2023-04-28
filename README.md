@@ -17,13 +17,6 @@ The Floyd-Warshall algorithm is an algorithm used to find the shortest path betw
 ![Final Matrix](https://github.com/tolgatosunn/Floyd-Warshall_Recursion/blob/main/Images/Final%20Matrix.PNG)
 [Final matrix which includes all the shortest distances between the nodes.](https://www.programiz.com/dsa/floyd-warshall-algorithm)
 
-## Code and Resources Used
-
-Python Version: 3.8.5
-
-Jupyter Lab: 3.3.2
-
-Packages: sys, random, unittest, patch, StringIO, time
 ## Recursive Version
 
 Module Name: floyd_recursion.py
