@@ -1,5 +1,0 @@
-Python Version: 3.8.5
-
-Jupyter Lab: 3.3.2
-
-Packages: sys, random, unittest, patch, StringIO, time
